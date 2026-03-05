@@ -18,21 +18,30 @@ The dataset follows the **chat format used for SFT training**:
 The assistant response contains the **target XML configuration**.
 
 ### Typical Workflow
-
+        00-check-sft.py
+        01-token-count-qwen.py
+        02-build-sft-min-8k.py
+        03-check_dataset_xml.py
+        04-train-qwen-lora-8k.py
+        05-inference-sanity-check-v04.py
+        06-ABtest.py
+        
 1. Check dataset structure 
     > `python 00-check-sft.py`
-2. Build filtered/tokenized dataset   
-   > `python 01-build-sft-min-8k.py \
+2. Compute REAL token lengths using  qwen tokenizer    
+    >`python 01-token-count-qwen.py --jsonl out/sft_min/train.jsonl --model Qwen/Qwen2.5-7B-Instruct`
+3. Build filtered/tokenized dataset   
+   > `python 02-build-sft-min.py \
   --in-dir out/sft_min \
   --out-dir out/sft_min_4k \
   --max-len 4096 \
   --trust-remote-code`
-3. Validate XML structure  python
+4. Validate XML structure  python
     > `03-check_dataset_xml.py \
   --train out/sft_min_4k/train_4k.jsonl \
   --val out/sft_min_4k/val_4k.jsonl`
 4. Train LoRA adapter  
-    > `python 04-train-qwen-lora-8k.py \
+    > `python 04-train-qwen-lora.py \
   --model Qwen/Qwen2.5-3B-Instruct \
   --train-pt out/sft_min_4k/train_4k_tokenized.pt \
   --val-pt out/sft_min_4k/val_4k_tokenized.pt \
@@ -41,7 +50,7 @@ The assistant response contains the **target XML configuration**.
   --lr 1e-4 \
   --grad-accum 16`
 5. Run inference sanity check 
-    > `python 05-inference-sanity-check-v04.py`
+    > `python 05-inference-sanity-check.py`
 6. Compare Base vs Adapter
     > `python 06-ABtest.py`
 7. Evaluate on validation set
