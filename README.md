@@ -20,10 +20,10 @@ The assistant response contains the **target XML configuration**.
 ### Typical Workflow
         00-check-sft.py
         01-token-count-qwen.py
-        02-build-sft-min-8k.py
+        02-build-sft-min.py
         03-check_dataset_xml.py
-        04-train-qwen-lora-8k.py
-        05-inference-sanity-check-v04.py
+        04-train-qwen-lora.py
+        05-inference-sanity-check.py
         06-ABtest.py
         
 1. Check dataset structure 
