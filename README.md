@@ -1,11 +1,14 @@
 # Qwen NL to XML SFT
 
   
-A lightweight pipeline for fine-tuning LLMs to translate **AMI** (Advanced Metering Infrastructure) scenario descriptions in natural luanguage **(NL)** into structured **XML**.  The project uses **Supervised Fine-Tuning (SFT)** with **LoRA adapters** on Qwen models. and the dataset consists of pairs: Natural Language scenario  to XML configuration. The goal being to learn structured generation for network simulation or AMI scenario configuration.
+A lightweight pipeline for fine-tuning LLMs to translate **AMI** (Advanced Metering Infrastructure) scenario descriptions in natural luanguage **(NL)** into structured **XML**.  The project uses **Supervised Fine-Tuning (SFT)** with **LoRA adapters** on Qwen models. 
+
+Experiments are conducted using **4K** context window (`max_len = 4096`). An alternative experiment using an **8K context window (8192 tokens)** + **Colab** (using an **A100** GPU)  is available in ***[Qwen7B-NL-XML-SFT-8K](https://github.com/AbdelbasetKABOU/Qwen7B-NL-XML-SFT-8K)***.
 
 ### Dataset Format
 
-The dataset follows the **chat format used for SFT training**:
+The dataset consists of pairs: _(Natural Language scenario,  XML configuration)_.  It follows the **chat format used for SFT training**:
+
 ```json
 {
   "messages": [
