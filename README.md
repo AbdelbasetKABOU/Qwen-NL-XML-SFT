@@ -3,7 +3,10 @@
   
 A lightweight pipeline for fine-tuning LLMs to translate **AMI** (Advanced Metering Infrastructure) scenario descriptions in natural luanguage **(NL)** into structured **XML**.  The project uses **Supervised Fine-Tuning (SFT)** with **LoRA adapters** on Qwen models. 
 
-Experiments are conducted using **4K** context window (`max_len = 4096`). An alternative experiment using an **8K context window (8192 tokens)** + **Colab** (using an **A100** GPU)  is available in ***[Qwen7B-NL-XML-SFT-8K](https://github.com/AbdelbasetKABOU/Qwen7B-NL-XML-SFT-8K)***.
+Experiments are conducted using **4K** context window (`max_len = 4096`). An alternative experiment using an **8K context window (8192 tokens)** + **Colab** (using an **A100** GPU)  
+
+The repository focuses on 4K context training _(max_len = 4096)_ using local GPU. A companion repo explores 8K context using Colab + A100 GPU (c.f., [Qwen7B-NL-XML-SFT-8K](https://github.com/AbdelbasetKABOU/Qwen7B-NL-XML-SFT-8K)).
+
 
 ### Dataset Format
 
@@ -39,11 +42,9 @@ The assistant response contains the **target XML configuration**.
     >`python 07-eval-valset_3steps.py`
 
 ### Notes
--   Training uses **LoRA adapters**.
-    -  _and generation using **chat templates compatible with Qwen models**_.    
 -   The evaluation scripts measure:
     -   _XML validity._        
     -   _exact match._        
-    -   _structural similarity._
+    -   _structural similarity ([Jaccard](https://en.wikipedia.org/wiki/Jaccard_index))._
 
 
