@@ -1,11 +1,9 @@
 # Qwen NL to XML SFT
 
   
-A lightweight pipeline for fine-tuning LLMs to translate **AMI** (Advanced Metering Infrastructure) scenario descriptions in natural luanguage **(NL)** into structured **XML**.  The project uses **Supervised Fine-Tuning (SFT)** with **LoRA adapters** on Qwen models. 
+A lightweight pipeline for fine-tuning LLMs to translate AMI _(Advanced Metering Infrastructure)_ scenario descriptions in natural luanguage **(NL)** into structured **XML**.  The project uses **Supervised Fine-Tuning** _(SFT)_ with LoRA adapters on Qwen models. 
 
-Experiments are conducted using **4K** context window (`max_len = 4096`). An alternative experiment using an **8K context window (8192 tokens)** + **Colab** (using an **A100** GPU)  
-
-The repository focuses on 4K context training _(max_len = 4096)_ using local GPU. A companion repo explores 8K context using Colab + A100 GPU (c.f., [Qwen7B-NL-XML-SFT-8K](https://github.com/AbdelbasetKABOU/Qwen7B-NL-XML-SFT-8K)).
+The repository focuses on 4K context training _(max_len = 4096)_ using local GPU. A companion repo explores 8K context using Colab + A100 GPU _(c.f., [Qwen7B-NL-XML-SFT-8K](https://github.com/AbdelbasetKABOU/Qwen7B-NL-XML-SFT-8K))_.
 
 
 ### Dataset Format
