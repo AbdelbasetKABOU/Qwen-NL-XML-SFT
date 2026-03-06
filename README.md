@@ -33,7 +33,7 @@ The assistant response contains the **target XML configuration**.
 6. Compare Base vs Adapter
     > `python 06-ABtest.py`
 7. Evaluate on validation set
-    >`python 07-eval-valset.py`
+    >`python 07-eval-valset_3steps.py`
 
 ### Notes
 -   Training uses **LoRA adapters**.
