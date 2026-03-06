@@ -18,13 +18,13 @@ The dataset follows the **chat format used for SFT training**:
 The assistant response contains the **target XML configuration**.
 
 ### Typical Workflow        
-1. Check dataset structure 
+0. Check dataset structure 
     > `python 00-check-sft.py`
-2. Compute REAL token lengths using  qwen tokenizer    
+1. Compute REAL token lengths using  qwen tokenizer    
     >`python 01-token-count-qwen.py --jsonl out/sft_min/train.jsonl --model Qwen/Qwen2.5-7B-Instruct`
-3. Build filtered/tokenized dataset   
+2. Build filtered/tokenized dataset   
    > `python 02-build-sft-min.py --in-dir out/sft_min --out-dir out/sft_min_4k --max-len 4096 --trust-remote-code`
-4. Validate XML structure  python
+3. Validate XML structure  python
     > `03-check_dataset_xml.py   --train out/sft_min_4k/train_4k.jsonl   --val out/sft_min_4k/val_4k.jsonl`
 4. Train LoRA adapter  
     > `python 04-train-qwen-lora.py   --model Qwen/Qwen2.5-3B-Instruct   --train-pt out/sft_min_4k/train_4k_tokenized.pt   --val-pt out/sft_min_4k/val_4k_tokenized.pt   --out-dir outputs/qwen2p5_3b_sft_min_4k_lora   --max-steps 140   --lr 1e-4   --grad-accum 16`
